@@ -1,3 +1,13 @@
 <html>
+    <title> Student Waiting Room</title>
+    <h2 id = "h2"> Please wait while your teacher posts a question </h2>
+    <script>
+        conn.onmessage = function onMessage(msg){
+            if(msg.type == "RespondCode") {
+                document.getElementbyId("h2").innerHTML = question;
+            }
+        }
+    </script>
+    
 
 </html>
