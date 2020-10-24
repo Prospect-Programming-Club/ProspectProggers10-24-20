@@ -22,6 +22,7 @@ function on_connection(client) {
                     fs.writeFileSync("./classes/" + generatedCode + ".json", "");
                 }
                 client.send(generatedCode)
+            
         }
     });
 }
