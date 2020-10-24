@@ -21,6 +21,7 @@ function on_connection(client) {
                     var fs = require('fs');
                     fs.writeFileSync("./classes/" + generatedCode + ".json", "");
                 }
+                client.send(generatedCode)
         }
     });
 }
