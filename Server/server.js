@@ -17,8 +17,10 @@ function on_connection(client) {
         switch(type){
             case "RequestCode":
                 var generatedCode = Math.floor(Math.random() * 100000)
-                checkExists(9999)
-                
+                if(!checkExists(generatedCode)){
+                    var fs = require('fs');
+                    fs.writeFileSync("./classes/" + generatedCode + ".json", "");
+                }
         }
     });
 }
