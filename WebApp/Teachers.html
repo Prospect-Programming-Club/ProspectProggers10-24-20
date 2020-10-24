@@ -1,37 +1,38 @@
 
 
 <h3>Below is your randomly generated code: Please ask your students to use this code</h3>
+<!--    <script>-->
+<!--    function myFunction() {-->
+<!--      var code = Math.floor(10000 + Math.random() * 90000);-->
+
+<!--      document.getElementById("myNumber").innerHTML = code;-->
 <script>
-    var conn = new WebSocket("ws://localhost:3000")
+            var conn = new WebSocket("ws://localhost:3000")
 
-    var requestCode = {
-        "type" : "RequestCode"
-    }
+            var requestCode = {
+            "type" : "RequestCode"
+        }
 
-    function on_open(client) {
-        console.log("hello")
         conn.send(JSON.stringify(requestCode))
-    }
-
-    conn.onmessage = function onMessage(msg){
-        if(msg.type == "RespondCode") msg.code
-    }
-    function getCode(){
+        conn.onmessage = function onMessage(msg){
+            if(msg.data.type == "RespondCode") msg.data.code
+        }
+        function getCode(){
         document.getElementById("myNumber").innerHTML = code;
-    }
-
-    conn.onopen = on_open;
-</script>
-<body onload="getCode">
-    Your code is: <span id = "myNumber"><br></span>
-</body>
+        }
+        </script>
+<!--    }-->
+<!--    myFunction();-->
+<!--    </script>-->
+<body onload = "getCode">
+Your code is (show number): <span id = "myNumber"><br></span>
+<button onclick =
+                </body>
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     </head>
 
-    <body> 
-        <button id="Add">Click to add textbox</button>
-        <button id="Remove">Click to remove textbox</button>
+    <body> <button id="Add">Click to add textbox</button> <button id="Remove">Click to remove textbox</button>
     <div id="textboxDiv"></div>
     <script>
         $(document).ready(function() {
@@ -48,6 +49,47 @@
     </form>
     </body>
     <script>
-        
+        if
     </script>
+
+    <!--    <script>-->
+    <!--    var row = $('#row-container .row:eq(0)').clone();-->
+    <!--    $('#addButton').data('row',row);-->
+    <!--    $('#addButton').click(function(){-->
+    <!--    $('#row-container').append($(this).data('row').clone());-->
+    <!--    });-->
+    <!--    $('#removeButton').click(function(){-->
+    <!--    $('#row-container .row').eq(  $('#row-container .row').length-1 ).remove();-->
+    <!--    });-->
+    <!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">-->
+    <!--    </script>-->
+    <!--    <div class="select-box">-->
+    <!--        <input type='button' value='Add Button' id='addButton'>-->
+    <!--        <input type='button' value='Remove Button' id='removeButton'>-->
+    <!--    </div>-->
+
+    <!--    <div id="row-container">-->
+    <!--        <div class="row">-->
+    <!--            <div class="col-lg-3">-->
+    <!--                <div class="form-group">-->
+    <!--                    <input type="text" class="form-control" name="size" placeholder="Size" />-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--            <div class="col-lg-3">-->
+    <!--                <div class="form-group">-->
+    <!--                    <input type="text" class="form-control" name="clr" placeholder="Color" />-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--            <div class="col-lg-3">-->
+    <!--                <div class="form-group">-->
+    <!--                    <input type="text" name="qty" placeholder="Quantity" />-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--            <div class="col-lg-3">-->
+    <!--                <div class="form-group">-->
+    <!--                    <input type="file" class="form-control" name="img" />-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </div>-->
 </html>
