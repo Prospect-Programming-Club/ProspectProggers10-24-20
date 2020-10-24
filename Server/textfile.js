@@ -1,8 +1,8 @@
 Const = fs = require ('fs');
 
-fs.readFile('./example.jason', 'utf-8',(err, jsonString) =>{
+fs.readFile('./example.json', 'utf-8',(err, jsonString) =>{
     if (err){
-        Console.log(err);
+        console.log(err);
     }else{
     try {
         constdata = JSON.parse(jsonString);
