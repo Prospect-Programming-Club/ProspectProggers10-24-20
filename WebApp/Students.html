@@ -1,8 +1,31 @@
 <html>
-    <h1>Students please enter your join code</h1>
-    <form>
-        <label for="code">Join Code</label><br>
-        <input type="text" id="code" name="code"><br>
+    <head>
+        <title>Focus Website</title>
+    </head>
+    <head>
+        <h1 style = "text-align: center"></h1>
+        <h2>Welcome to our focus website</h2>
+    </head>
 
-    </form>
+    <body>
+        <p>A tool for improving student teacher interactions and imporves focus with students.<br> Teachers please click on the link below</p>
+    </body>
+
+
+
+    <button id="myButton" class="float-left submit-button" >Students</button>
+
+    <script type="text/javascript">
+    document.getElementById("myButton").onclick = function () {
+         location.href = "Students.html";
+    };
+    </script>
+    <button id="TeacherButton" class="Teacher float-left submit button" >Teachers</button>
+
+    <script type="text/javascript">
+    document.getElementById("TeacherButton").onclick = function () {
+         location.href = "Teachers.html";
+    };
+    </script>
+
 </html>
