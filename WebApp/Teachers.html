@@ -1,9 +1,8 @@
-
-
+<html>
 <h3>Below is your randomly generated code: Please ask your students to use this code</h3>
 <script>
     var conn = new WebSocket("ws://localhost:3000")
-
+    var htmlcode;
     var requestCode = {
         "type" : "RequestCode"
     }
@@ -14,10 +13,13 @@
     }
 
     conn.onmessage = function onMessage(msg){
-        if(msg.type == "RespondCode") msg.code
+        if(msg.type == "RespondCode") {
+            htmlcode = msg.code;
+        }
+
     }
     function getCode(){
-        document.getElementById("myNumber").innerHTML = code;
+        document.getElementById("myNumber").innerHTML = htmlcode;
     }
 
     conn.onopen = on_open;
