@@ -1,25 +1,37 @@
 <html>
     <h1>Students please enter your join code</h1>
-    <form>
+    <span id="Error">test</span>
+    <form id="input">
         <label for="code">Join Code</label><br>
         <input type="number" id="code" name="code"><br>
-        <label for = "code"> Name </label><br>
-        <input type = "text" id = "StudentName" name = "StudentName"><br>
-        <input type="submit" value="Submit">
-    </form>
+        <label for = "StudentName"> Name </label><br>
+        <input type = "text" id = "StudentName" name = "StudentName">
+    </form><br>
+    <button type="button" onclick="submit()">Submit</button><br>
     <script>
         var conn = new WebSocket("ws://localhost:3000")
 
-            var sendName = {
-            "type" : "sendName"
-            "data" :  document.getElementById("name").name
-        }
+        function submit(){
+            localStorage.setItem("name", document.getElementById("StudentName").value);
+            localStorage.setItem("code", document.getElementById("code").value);
+            
             var sendCode = {
-            "type": "sendCode"
-            "data": document.getElementById("code").code
+                "type": "SendCode",
+                "code": document.getElementById("code").value
+            }
+
+            conn.send(JSON.stringify(sendCode));
+            
+            document.getElementById("Error").textContent = "Code doesn't exist"
         }
 
-        conn.send(JSON.stringify(requestCode))
+        conn.onmessage = function onMessage(msg){
+            var json = JSON.parse(msg.data);
+            if(json.type == "ConfirmCode") {
+                console.log("test")
+                window.location.href = "StudentQuestions.html";
+            }
+        }
     </script>
     <a href = "StudentQuestions.html"  class="button">Click here to join</a>
 </html>

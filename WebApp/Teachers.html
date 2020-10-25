@@ -13,25 +13,32 @@
     }
 
     conn.onmessage = function onMessage(msg){
-        if(msg.type == "RespondCode") {
-            htmlcode = msg.code;
+        var json = JSON.parse(msg.data);
+        if(json.type == "RespondCode") {
+            htmlcode = json.code;
         }
-
+        getCode();
     }
     function getCode(){
         document.getElementById("myNumber").innerHTML = htmlcode;
+    }
+    function sendQuestion(){
+        conn.send(JSON.stringify{
+            "type": "SendQuestion",
+            "question": document.getElementById("question").value
+        })
     }
 
     conn.onopen = on_open;
 </script>
 <body onload="getCode">
-    Your code is: <span id = "myNumber"><br></span>
+    Your code is: <span id = "myNumber"></span><br>
 </body>
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     </head>
 
-    <body> 
+    <!-- <body> 
         <button id="Add">Click to add textbox</button>
         <button id="Remove">Click to remove textbox</button>
     <div id="textboxDiv"></div>
@@ -44,10 +51,12 @@
                 $("#textboxDiv").children().last().remove();
             });
         });
-    </script>
+    </script> -->
     <form>
-        <button onclick="TeacherQuestions.html='default.asp'">Submit</button>
-    </form>
+        <label for="question">Send Question</label><br>
+        <input type="text" id="question" name="question"><br>
+    </form><br>
+    <button type="button" onclick="sendQuestion()">Submit</button>
     </body>
     <script>
         
